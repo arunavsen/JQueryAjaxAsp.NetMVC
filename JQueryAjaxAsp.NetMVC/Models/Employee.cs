@@ -12,6 +12,7 @@ namespace JQueryAjaxAsp.NetMVC.Models
     {
         [Key]
         public int EmployeeId { get; set; }
+        [Required(ErrorMessage ="Please enter name")]
         public string Name { get; set; }
         public string Position { get; set; }
         public string Office { get; set; }
