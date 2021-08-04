@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace JQueryAjaxAsp.NetMVC.Models
         public string Position { get; set; }
         public string Office { get; set; }
         public int? Salary { get; set; }
+        [DisplayName("Image")]
         public string ImagePath { get; set; }
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
