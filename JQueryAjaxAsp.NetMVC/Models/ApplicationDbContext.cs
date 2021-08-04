@@ -12,5 +12,7 @@ namespace JQueryAjaxAsp.NetMVC.Models
         {
 
         }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 }
