@@ -18,10 +18,12 @@ function jQueryAjaxPost(form) {
             data: new FormData(form),
             success: function (response) {
                 if (response.success) {
-                    $("#firstTab").html(response);
+                    $("#firstTab").html(response.html);
                     refreshAddNewTab($(form).attr('data-resetUrl'), true);
+                    $.notify(response.message, "success");
                 } else {
                     //Error message
+                    $.notify(response.message, "error");
                 }
             }
         };
