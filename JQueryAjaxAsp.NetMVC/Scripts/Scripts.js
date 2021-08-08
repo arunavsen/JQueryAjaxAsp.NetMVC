@@ -43,7 +43,10 @@ function refreshAddNewTab(restUrl, showViewTab) {
         url: restUrl,
         success: function (response) {
             $("#secondTab").html(response);
-            $('ul.nav.nav-tabs a:eq(0)').tab('show');
+            $('ul.nav.nav-tabs a:eq(1)').html('Add New');
+            if (showViewTab) {
+                $('ul.nav.nav-tabs a:eq(0)').tab('show');
+            }
         }
     });
 }
