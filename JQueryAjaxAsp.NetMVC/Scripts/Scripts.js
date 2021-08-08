@@ -59,3 +59,21 @@ function Edit(url) {
         }
     });
 }
+
+function Delete(url) {
+    if (confirm("Are you sure to delete this employee?"))
+    {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (response) {
+                if (response.success) {
+                    $("#firstTab").html(response.html);
+                    $.notify(response.message, "warn");
+                } else {
+                    $.notify(response.message, "error");
+                }
+            }
+        });
+    }
+}

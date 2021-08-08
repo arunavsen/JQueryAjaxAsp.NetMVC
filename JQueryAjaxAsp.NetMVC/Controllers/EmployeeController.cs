@@ -81,5 +81,22 @@ namespace JQueryAjaxAsp.NetMVC.Controllers
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                Employee emp = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault<Employee>();
+                _context.Employees.Remove(emp);
+                _context.SaveChanges();
+
+                return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployees()), message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);                
+            }
+        }
     }
 }
