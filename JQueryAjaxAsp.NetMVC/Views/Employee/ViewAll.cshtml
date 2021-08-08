@@ -44,9 +44,8 @@
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
+                <a class="btn btn-info btn-sm"><i class="fas fa-pencil"></i></a>
+                <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
     }
