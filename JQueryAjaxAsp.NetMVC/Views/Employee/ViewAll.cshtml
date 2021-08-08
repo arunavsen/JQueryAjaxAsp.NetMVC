@@ -44,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
             <td>
-                <a class="btn btn-info btn-sm"><i class="fas fa-pencil"></i></a>
+                <a class="btn btn-info btn-sm" onclick="Edit('@Url.Action("AddOrEdit","Employee", new { id = @item.EmployeeId})')"><i class="fas fa-pencil"></i></a>
                 <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
             </td>
         </tr>

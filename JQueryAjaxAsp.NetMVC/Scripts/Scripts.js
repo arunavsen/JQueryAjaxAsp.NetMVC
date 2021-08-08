@@ -47,3 +47,15 @@ function refreshAddNewTab(restUrl, showViewTab) {
         }
     });
 }
+
+function Edit(url) {
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (response) {
+            $("#secondTab").html(response);
+            $('ul.nav.nav-tabs a:eq(1)').html('Edit');
+            $('ul.nav.nav-tabs a:eq(1)').tab('show');
+        }
+    });
+}

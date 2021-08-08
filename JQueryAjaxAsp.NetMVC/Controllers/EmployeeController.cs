@@ -1,6 +1,7 @@
 ﻿using JQueryAjaxAsp.NetMVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -36,6 +37,10 @@ namespace JQueryAjaxAsp.NetMVC.Controllers
         public ActionResult AddOrEdit(int id = 0)
         {
             Employee emp = new Employee();
+            if (id != 0)
+            {
+                emp = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault<Employee>();
+            }
             return View(emp);
         }
 
@@ -56,9 +61,17 @@ namespace JQueryAjaxAsp.NetMVC.Controllers
 
                     emp.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/AppFiles/Images/"), fileName));
                 }
-
-                _context.Employees.Add(emp);
-                _context.SaveChanges();
+                if (emp.EmployeeId == 0)
+                {
+                    _context.Employees.Add(emp);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    _context.Entry(emp).State = EntityState.Modified;
+                    _context.SaveChanges();
+                }
+               
 
                 return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "ViewAll", GetAllEmployees()), message = "Submitted Successfully" }, JsonRequestBehavior.AllowGet);
             }
