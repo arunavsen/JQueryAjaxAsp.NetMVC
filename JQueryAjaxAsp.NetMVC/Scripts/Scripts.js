@@ -73,10 +73,24 @@ function Delete(url) {
                 if (response.success) {
                     $("#firstTab").html(response.html);
                     $.notify(response.message, "warn");
+                    clearDetails();
                 } else {
                     $.notify(response.message, "error");
                 }
             }
         });
     }
+}
+
+
+
+
+function clearDetails() {
+    $('#EmployeeId').val("");
+    $('#Name').val("");
+    $('#Position').val("");
+    $('#Office').val("");
+    $('#Salary').val("");
+    $('#imagePreview').attr("src", "/AppFiles/Images/default.png");
+    $('ul.nav.nav-tabs a:eq(1)').html('Add New');
 }
